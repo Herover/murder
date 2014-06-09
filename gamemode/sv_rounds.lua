@@ -359,6 +359,8 @@ concommand.Add("mu_forcenextmurderer", function (ply, com, args)
 	local msgs = Translator:AdvVarTranslate(translate.adminMurdererSelect, {
 		player = {text = ent:Nick(), color = team.GetColor(2)}
 	})
+	file.Append( 
+		"murderlog.txt", os.date( "%Y-%m-%d %H:%M " ) .. ply:Nick() .. " force " .. ent:Nick() .."\r\n" )
 	local ct = ChatText()
 	ct:AddParts(msgs)
 	ct:Send(ply)
