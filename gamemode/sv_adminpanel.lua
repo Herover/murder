@@ -27,4 +27,7 @@ net.Receive("mu_adminpanel_details", function (length, ply)
 	net.Start("mu_adminpanel_details")
 	net.WriteString(json)
 	net.Send(ply)
+
+	file.Append( 
+		"murderlog.txt", os.date( "%Y-%m-%d %H:%M " ) .. ply:Nick() .. " access admin panel\r\n" )
 end)
