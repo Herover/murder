@@ -1,5 +1,13 @@
 
 local menu
+
+
+function addOpen(url) 
+	print( "addOpen!" )
+	print( url )
+	gui.OpenURL( url )
+end
+
 function GM:DisplayEndRoundBoard(data)
 	if IsValid(menu) then
 		menu:Remove()
@@ -148,39 +156,74 @@ function GM:DisplayEndRoundBoard(data)
 		lootList:AddItem(pnl)
 	end
 
-	local add = vgui.Create("DButton", menu)
-	add:Dock(BOTTOM)
-	add:SetTall(64)
-	add:SetText("")
-	local mat = Material("murder/melon_logo_scoreboard.png", "noclamp")
-	function add:Paint(w, h)
-		surface.SetMaterial(mat)
-		if self:IsDown() then
-			surface.SetDrawColor(180, 180, 180, 255)
-			surface.SetTextColor(180, 180, 180, 255)
-		elseif self.Hovered then
-			surface.SetDrawColor(220, 220, 220, 255)
-			surface.SetTextColor(220, 220, 220, 255)
-		else
-			surface.SetDrawColor(255, 255, 255, 255)
-			surface.SetTextColor(255, 255, 255, 255)
-		end
+	--print( "--------------------- CREATING ADD ELEMENT ---------------------" )
+	--local add = vgui.Create("DHTML", menu)
+	--local addId = 0
+	--local addDest = ""
+	--add:Dock(BOTTOM)
+	--add:SetSize( 324, 64 )
+	--add.DoClick = function()
+	--	print( "CLICK ADD" )
+	--	addOpen( addDest )
+	--	surface.PlaySound("UI/buttonclick.wav")
+	--end
+	--http.Fetch( "http://server.lolbrothers.com/add/?",
+	--	function( body, len, headers, code )
+	--		print( body )
+	--		local repl = util.JSONToTable( body )
+	--		add:OpenURL( "server.lolbrothers.com/add/banner/?id=" .. repl["id"] )
+	--		addId = repl["id"]
+	--		addDest = repl["url"]
+	--	end,
+	--	function( error )
+	--		print( "Didnt load add, error was" )
+	--		print( error )
+	--	end
+	--)
 
-		local t = translate.adMelonbomberWhy
-		surface.SetFont("MersRadialSmall")
-		local tw, th = surface.GetTextSize(t)
-		surface.SetTextPos(4, h / 2 - th / 2)
-		surface.DrawText(t)
-		surface.DrawTexturedRect(4 + tw + 4, 0, 324, 64)
+	--local addButton = vgui.Create("DButton", add)
+	--addButton:Dock(BOTTOM)
+	--addButton:SetSize( 324, 64 )
+	--addButton:SetText( "" )
+	--addButton.DoClick = function()
+	--	print( "CLICK ADD" )
+	--	addOpen( addDest )
+	--	surface.PlaySound("UI/buttonclick.wav")
+	--end
+	--addButton:SetWidth( 324 )
+	--addButton.Paint = function()
+	--end
 
-		surface.SetTextPos(4 + tw + 4 + 324 + 4, h / 2 - th / 2)
-		surface.DrawText(translate.adMelonbomberBy)
-	end
-
-	function add:DoClick()
-		gui.OpenURL("http://steamcommunity.com/sharedfiles/filedetails/?id=237537750")
-		surface.PlaySound("UI/buttonclick.wav")
-	end
+	--add:SetText("")
+	--local mat = Material("murder/melon_logo_scoreboard.png", "noclamp")
+	--function add:Paint(w, h)
+	--	surface.SetMaterial(mat)
+	--	if self:IsDown() then
+	--		surface.SetDrawColor(180, 180, 180, 255)
+	--		surface.SetTextColor(180, 180, 180, 255)
+	--	elseif self.Hovered then
+	--		surface.SetDrawColor(220, 220, 220, 255)
+	--		surface.SetTextColor(220, 220, 220, 255)
+	--	else
+	--		surface.SetDrawColor(255, 255, 255, 255)
+	--		surface.SetTextColor(255, 255, 255, 255)
+	--	end
+--
+	--	local t = translate.adMelonbomberWhy
+	--	surface.SetFont("MersRadialSmall")
+	--	local tw, th = surface.GetTextSize(t)
+	--	surface.SetTextPos(4, h / 2 - th / 2)
+	--	surface.DrawText(t)
+	--	surface.DrawTexturedRect(4 + tw + 4, 0, 324, 64)
+--
+	--	surface.SetTextPos(4 + tw + 4 + 324 + 4, h / 2 - th / 2)
+	--	surface.DrawText(translate.adMelonbomberBy)
+	--end
+--
+	--function add:DoClick()
+	--	gui.OpenURL("http://steamcommunity.com/sharedfiles/filedetails/?id=237537750")
+	--	surface.PlaySound("UI/buttonclick.wav")
+	--end
 
 end
 
